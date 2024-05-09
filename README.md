@@ -41,3 +41,17 @@ python train.py
 ### Resource Used
 
 All the models have been trained on DGX A-100 gpu
+
+#  Future Scopes
+
+We would like to perform various investigations on the above models in our future works
+
+**Applying Regularization Techniques**:  
+  - Dropout Rate: Compare model performance with varying dropout rates (e.g., 0.2, 0.4, 0.6).
+  - Data Augmentation: Analyze the effect of different augmentation strategies like rotation, flipping, cropping, etc. 
+  - Weight Decay/L2 Regularization: Examine the impact of varying weight decay values. 
+
+**Training Optimization Strategies**:  
+  - Learning Rate Scheduling: Compare constant learning rates vs. learning rate schedules (e.g., cosine annealing, step decay).  
+  - Batch Size Impact: Evaluate different batch sizes (e.g., 16, 32, 64)  
+  - Optimizer Selection: Compare optimizers like Adam, SGD with momentum, RMSProp, etc.
