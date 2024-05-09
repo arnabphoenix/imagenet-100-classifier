@@ -5,7 +5,7 @@ This Repo contains a comparative analysis of 4 different classifiers trained and
 #  Comparison of the Accuracies, Training Times, Inferencing Times
 
 **Baseline Scenario**:  
-Each model is trained for 30 epochs, Adam optimizer is used, Loss function used is Cross Entropy Loss, Default Learning Rate used is 0.0001.  
+Each model is trained for 30 epochs, Adam optimizer is used, Loss function used is Cross Entropy Loss, Default Learning Rate used is 0.0001, batch size of 256 is selected,  
 Accuracy is calculated on the validation dataset.
 
 **ResNet-34**:  
