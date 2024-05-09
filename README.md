@@ -11,10 +11,10 @@ ResNet-34 : Accuracy: 63%
 					Inference Time: 0.188 seconds
 ResNet-50 : Accuracy: 58%
 					Training Time:  27032.31 seconds
-					Inference Time: 0.637
+					Inference Time: 0.637 seconds
 EfficientNet-B0 : Accuracy: 48%
 					Training Time:  25004.28  seconds
-					Inference Time: 0.368
+					Inference Time: 0.368 seconds
 
 
 
