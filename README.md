@@ -1,6 +1,6 @@
 # A comparative study for ImageNet-100 Classification task with ResNet-50, ResNet-34, ResNet-18, Efficient-NetB0
 
-This Repo contains a comparative analysis of 4 different classifiers trained and evaluated on the bench marks dataset, Imagenet-100 containing 100 classes.
+This Repo contains a comparative analysis of 4 different classifiers trained and evaluated from scratch on the benchmark dataset, Imagenet-100 containing 100 classes.
 
 #  Comparison of the Accuracies, Training Times, Inferencing Times
 
