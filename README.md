@@ -34,3 +34,7 @@ Accuracy is calculated on the validation dataset.
 ### Training
 
 python train.py
+
+### Resource Used
+
+All the models have been trained on DGX A-100 gpu
