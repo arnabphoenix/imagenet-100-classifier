@@ -4,17 +4,24 @@ This Repo contains a comparative analysis of 4 different classifiers trained and
 
 #  Comparison of the Accuracies, Training Times, Inferencing Times
 
-Baseline Scenario: Each model is trained for 30 epochs, Adam optimizer is used, Loss function used is Cross Entropy Loss, Default Learning Rate used is 0.0001.
-Accuracy is calculated on the validation dataset
-ResNet-34 : Accuracy: 63%
-					Training Time:  31906.43 seconds
-					Inference Time: 0.188 seconds
-ResNet-50 : Accuracy: 58%
-					Training Time:  27032.31 seconds
-					Inference Time: 0.637 seconds
-EfficientNet-B0 : Accuracy: 48%
-					Training Time:  25004.28  seconds
-					Inference Time: 0.368 seconds
+**Baseline Scenario**:  
+Each model is trained for 30 epochs, Adam optimizer is used, Loss function used is Cross Entropy Loss, Default Learning Rate used is 0.0001.  
+Accuracy is calculated on the validation dataset.
+
+**ResNet-34**:  
+  - Accuracy: 63%  
+  - Training Time: 31906.43 seconds  
+  - Inference Time: 0.188 seconds  
+
+**ResNet-50**:  
+  - Accuracy: 58%  
+  - Training Time: 27032.31 seconds  
+  - Inference Time: 0.637 seconds  
+
+**EfficientNet-B0**:  
+  - Accuracy: 48%  
+  - Training Time: 25004.28 seconds  
+  - Inference Time: 0.368 seconds
 
 
 
