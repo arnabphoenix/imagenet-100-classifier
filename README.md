@@ -24,7 +24,10 @@ Accuracy is calculated on the validation dataset.
   - Accuracy: 48%  
   - Training Time: 25004.28 seconds  
   - Inference Time: 0.368 seconds
-  - The entire classification report containing the Precision, Recall, and F1 score are included in the log files of each model 
+  - The entire classification report containing the Precision, Recall, and F1 score are included in the log files of each model
+
+**ResNet-18**:  
+  - To be included soon 
 
 
 
