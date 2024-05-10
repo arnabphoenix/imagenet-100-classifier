@@ -55,3 +55,12 @@ We would like to perform various investigations on the above models in our futur
   - Learning Rate Scheduling: Compare constant learning rates vs. learning rate schedules (e.g., cosine annealing, step decay).  
   - Batch Size Impact: Evaluate different batch sizes (e.g., 16, 32, 64)  
   - Optimizer Selection: Compare optimizers like Adam, SGD with momentum, RMSProp, etc.
+
+#  Upcoming Work
+
+Some new modifications to training modules will be added soon
+
+**Addition of a new module in ResNet netwroks names Squeeze and Excitation Module**:  
+  - Squeeze and Excitation Module will be added to ResNet34 network at first and later on to other ResNets.
+  - Addition of Regularization technique like weight decay
+  - Addidition of learning ate decay techniques like Cossine Annealing
