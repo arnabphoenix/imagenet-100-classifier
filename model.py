@@ -1,5 +1,6 @@
 import torch.nn as nn
 import torchvision.models as models
+from resnet34_se import resnet34_se
 
 def initialize_model(model_name, num_classes, pretrained=True):
     if model_name == 'resnet50':
@@ -14,8 +15,12 @@ def initialize_model(model_name, num_classes, pretrained=True):
         model.fc = nn.Linear(model.fc.in_features, num_classes)
     elif model_name == 'efficientnetb0':
         model = models.efficientnet_b0(pretrained=False)
-        model.classifier[1] = nn.Linear(model.classifier[1].in_features, 100) 
+        model.classifier[1] = nn.Linear(model.classifier[1].in_features, 100)
+    elif model_name == 'resnet34_se':
+        model = resnet34_se(num_classes=num_classes) 
     else:
         raise ValueError(f"Model {model_name} not supported")
 
     return model
+
+
