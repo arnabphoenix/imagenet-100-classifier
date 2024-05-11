@@ -17,7 +17,7 @@ Accuracy is calculated on the validation dataset.
 **ResNet-34_withSE**:  
   - Accuracy: 62%  
   - Training Time: 24187.11 seconds   
-  - Inference Time: 0.188 seconds
+ 
   - The entire classification report containing the Precision, Recall, and F1 score are included in the log files of each model
 
 **ResNet-50**:  
