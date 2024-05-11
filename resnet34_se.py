@@ -1,20 +1,10 @@
-import torch
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader, ConcatDataset
-import torchvision.transforms as transforms
-import torchvision.datasets as datasets
-import torchvision.models as models
-from sklearn.metrics import classification_report, confusion_matrix
-import numpy as np
-import time
-import os
-import torch.nn.functional as F
-
-
 ## MODEL CREATION
 import torch
 import torch.nn as nn
+import torch.optim as optim
+import torchvision.models as models
+import numpy as np
+import torch.nn.functional as F
 
 class SEModule(nn.Module):
     def __init__(self, channels, reduction=16):
@@ -139,120 +129,3 @@ def resnet34_se(num_classes=1000):
 
 
 
-model = resnet34_se(num_classes=100)
-
-
-
-model.apply(init_weights)
-model = model.to(device)
-
-# Loss and optimizer
-criterion = nn.CrossEntropyLoss()
-# optimizer = optim.AdamW(model.parameters(), lr=0.0001,weight_decay=1e-4)
-optimizer = optim.AdamW(model.parameters(), lr=0.0001)
-
-
-# Learning rate scheduler
-# scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
-
-# Training the model
-# Training the model
-def train_model(num_epochs):
-    total_train_time = 0
-    best_val_loss = float('inf')
-    for epoch in range(num_epochs):
-        start_time = time.time()  # Start time for the epoch
-        model.train()
-        running_loss = 0.0
-        correct = 0
-        total = 0
-        for i, (images, labels) in enumerate(train_loader):
-            images = images.to(device)
-            labels = labels.to(device)
-
-            # Forward pass
-            outputs = model(images)
-            loss = criterion(outputs, labels)
-            running_loss += loss.item() * images.size(0)
-
-            # Backward and optimize
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-            _, predicted = torch.max(outputs.data, 1)
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
-
-            if (i + 1) % 100 == 0:
-                print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(train_loader)}], Loss: {loss.item():.4f}')
-
-        # scheduler.step()  # Update the learning rate
-        training_loss = running_loss/total
-        training_accuracy = correct/total
-        end_time = time.time()  # End time for the epoch
-        epoch_duration = end_time - start_time
-        total_train_time += epoch_duration
-        print(f'Time elapsed for epoch {epoch + 1}: {epoch_duration:.2f} seconds')
-        print(f'Epoch {epoch+1}/{num_epochs}: Training Loss: {training_loss:.4f}, Training Accuracy: {training_accuracy:.4f}')
-        # print(f'Time elapsed for epoch {epoch + 1}: {epoch_duration:.2f} seconds')
-
-
-        
-        val_loss, val_accuracy = validate_model()
-        print(f'Epoch {epoch+1}/{num_epochs}: Validation Loss: {val_loss:.4f}, Validation Accuracy: {val_accuracy:.4f}')
-        torch.save(model.state_dict(), model_save_path)
-        print(f'Epoch {epoch+1}: Model improved and saved to {model_save_path}')
-        
-
-    print(f'Total training time: {total_train_time:.2f} seconds')
-
-# Validate the model
-def validate_model():
-    start_time = time.time()  # Start time for validation
-    model.eval()
-    total_loss = 0
-    all_preds = []
-    all_labels = []
-    total = 0
-    correct = 0
-    with torch.no_grad():
-        for images, labels in val_loader:
-            images = images.to(device)
-            labels = labels.to(device)
-            outputs = model(images)
-            loss = criterion(outputs, labels)
-            total_loss += loss.item() * labels.size(0)
-            _, predicted = torch.max(outputs.data, 1)
-            
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
-            all_preds.extend(predicted.cpu().numpy())
-            all_labels.extend(labels.cpu().numpy())
-
-    end_time = time.time()  # End time for validation
-    validation_duration = end_time - start_time
-    print(f'Validation time: {validation_duration:.2f} seconds')
-
-    average_loss = total_loss / total
-    accuracy = correct/total
-    print(f'Average Validation Loss: {average_loss:.4f}')
-
-    accuracy = accuracy_score(all_labels, all_preds)
-    print(f'Accuracy: {accuracy:.4f}')
-    print('Classification Report:')
-    print(classification_report(all_labels, all_preds, zero_division=0))
-    cm = confusion_matrix(all_labels, all_preds)
-    print('Confusion Matrix:')
-    print(cm)
-
-    return average_loss,accuracy
-
-    
-
-# Directory for saving the model
-model_save_path = '/csehome/m22cs053/RADIUS_ASSIGNMENT/saved_models/imagenet_100_resnet34_se_new.pth'
-os.makedirs(os.path.dirname(model_save_path), exist_ok=True)
-
-# Train and validate
-num_epochs = 30  # Set the number of epochs
-train_model(num_epochs)
