@@ -25,12 +25,11 @@ Accuracy is calculated on the validation dataset.
   - Inference Time: 0.637 seconds
   - The entire classification report containing the Precision, Recall, and F1 score are included in the log files of each model
 
-**ResNet-50 **:  
+**ResNet-50**:   
   - Accuracy: 65.66%
   - Cosine Annealing, and weight decay used, Run for 50 epochs
   - Training Time: 41864.76 seconds
   - Inference Time: 0.783 seconds  
-  
   - The entire classification report containing the Precision, Recall, and F1 score are included in the log files of each model 
 
 **EfficientNet-B0**:  
